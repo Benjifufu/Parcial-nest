@@ -6,7 +6,6 @@ import { CreateTaskDto } from './dto/create-task.dto';
 export class TasksController {
   constructor(private readonly tasksService: TasksService) {}
 
-  @UseGuards(AuthGuard)
   @Post()
   create(@Body() dto: CreateTaskDto) {
     return this.tasksService.create(dto);
