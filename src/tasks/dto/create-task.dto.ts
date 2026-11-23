@@ -1,5 +1,3 @@
-// src/tasks/dto/create-task.dto.ts
-import { Transform } from 'class-transformer';
 import {
   IsBoolean,
   IsMongoId,
@@ -7,17 +5,21 @@ import {
   IsOptional,
   IsString,
 } from 'class-validator';
+import { Transform } from 'class-transformer';
 
 export class CreateTaskDto {
   @IsString()
+  @Transform(({ value }) => {
+    const input: unknown = value;
+    return typeof input === 'string' ? input.trim() : input;
+  })
   @IsNotEmpty()
-  @Transform(({ value }) => (typeof value === 'string' ? value.trim() : value))
-  title: string;
+  title!: string;
 
   @IsOptional()
   @IsBoolean()
   completed?: boolean;
 
   @IsMongoId()
-  user: string;
+  user!: string;
 }

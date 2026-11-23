@@ -6,16 +6,16 @@ export type TaskDocument = HydratedDocument<Task>;
 @Schema({ timestamps: true, strict: false })
 export class Task {
   @Prop({ required: true })
-  title: string;
+  title!: string;
 
   @Prop()
-  description: string;
+  description!: string;
 
   @Prop({ default: false })
-  completed: boolean;
+  completed!: boolean;
 
   @Prop({ type: MongooseSchema.Types.ObjectId, ref: 'User' })
-  userId: string;
+  userId!: string;
 }
 
 export const TaskSchema = SchemaFactory.createForClass(Task);
