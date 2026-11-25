@@ -7,7 +7,4 @@ export class CreateUserDto {
 
   @IsEmail()
   email!: string;
-
-  @IsNotEmpty()
-  isAdmin!: boolean;
 }

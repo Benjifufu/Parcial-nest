@@ -13,7 +13,7 @@ export class TasksService {
   ) {}
 
   async create(dto: CreateTaskDto) {
-    await this.usersService.findById(dto.user);
+    await this.usersService.findById(dto.userId);
 
     return this.taskModel.create(dto);
   }

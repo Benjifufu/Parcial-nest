@@ -17,13 +17,13 @@ export class CreateTaskDto {
   title!: string;
 
   @IsString()
-  @IsNotEmpty()
-  description!: string;
+  @IsOptional()
+  description?: string;
 
   @IsOptional()
   @IsBoolean()
   completed?: boolean;
 
   @IsMongoId()
-  user!: string;
+  userId!: string;
 }
